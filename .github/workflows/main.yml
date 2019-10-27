@@ -10,12 +10,13 @@ jobs:
       - uses: actions/checkout@v1
       - name: install dependencies
         run: |
-          yum install -y boost-devel gcc-c++ cmake
+          yum install -y boost-devel gcc-c++ cmake make
       - name: configure build
         run: |
           mkdir build
           cd build
           cmake ../
       - name: build project
+        working-directory: ./build
         run: |
           make -j4
